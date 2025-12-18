@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    [Header("Element Settings")]
+    [SerializeField] private CrowdSystem crowdSystem;
+    [SerializeField] private ChunkManager chunkManager;
+
     [Header("Player Settings")]
     [SerializeField] private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,8 +52,10 @@ public class PlayerController : MonoBehaviour
 
             Vector3 position = transform.position;
             position.x = clickedPlayerPosition.x + xScreenDifference;
+            //참가자 청크의 이동 범위 제한(청크의 반지름 최대 범위)
+            position.x = Mathf.Clamp(position.x, -chunkManager.GetChunkWidth()/2+crowdSystem.GetRadius(), chunkManager.GetChunkWidth()/2-crowdSystem.GetRadius());
             transform.position = position;
-            transform.position = clickedPlayerPosition + Vector3.right * xScreenDifference;
+            // transform.position = clickedPlayerPosition + Vector3.right * xScreenDifference;
         }
 
 
