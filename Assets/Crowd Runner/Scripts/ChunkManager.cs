@@ -2,23 +2,25 @@ using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
 {
-    [header("Chunk Manager")]
-    [SerializeField] private Chunk chunkPrefabs;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // for (int i = 0; i < 5; i++)
-        // {
-        //     Vector3 chunkPosition = Vector3.zero; //설명: 청크의 위치를 0,0,0으로 설정
-        //     chunkPosition.z = i * 15;
-        //     Instantiate(chunkPrefabs, chunkPosition, Quaternion.identity, transform); //설명: 청크를 생성하고 위치를 설정
-        // }
+    [Header("Elements")]
+    [SerializeField] private Chunk[] chunkPrefabs;
 
+     void Start()
+    {
+        Vector3 position = Vector3.zero;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Chunk prefab = chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
+if(i>0) position.z += prefab.GetChunkSize()/2;
+            Chunk chunk = Instantiate(prefab, position, Quaternion.identity, transform);
+            position.z += chunk.GetChunkSize()/2;
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // 추후 업데이트 로직 구현 예정
+     void Update()
     {
-
     }
 }

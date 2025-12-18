@@ -16,7 +16,7 @@ public class Chunk : MonoBehaviour
 
     }
 
-    public float GetChunkSizeZ()
+    public float GetChunkSize()
     {
         return chunkSize.z;
     }
