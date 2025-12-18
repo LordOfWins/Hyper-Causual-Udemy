@@ -15,6 +15,5 @@ public class CrowdCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        crowdCountField.text = crowdCountText.childCount.ToString();
     }
 }
