@@ -21,6 +21,11 @@ public class Chunk : MonoBehaviour
         return chunkSize.z;
     }
 
+    public float GetChunkWidth()
+    {
+        return chunkSize.x;
+    }
+
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

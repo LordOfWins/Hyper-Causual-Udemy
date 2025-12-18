@@ -33,4 +33,9 @@ public class CrowdSystem : MonoBehaviour
         float z = radius * Mathf.Sqrt(index) * Mathf.Sin(Mathf.Deg2Rad * index * angle); //설명: 반지름 * 인덱스의 제곱근 * 인덱스 * 각도
         return new Vector3(x, 0, z);
     }
+
+    public float GetRadius()
+    {
+        return radius*Mathf.Sqrt(runnerPrefab.childCount);
+    }
 }
